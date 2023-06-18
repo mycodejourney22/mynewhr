@@ -8,7 +8,7 @@
   <%= f.input :date_of_birth,  as: :date, html5: true%>
    <br><br>
       <%= f.label :attachment %>
-      <%= f.file_field :attachment %>
+      <%= f.file_field :attachment, multiple: true %>
       <br>
   <%= f.button :submit %>
 <% end %>

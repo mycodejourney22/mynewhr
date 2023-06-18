@@ -24,7 +24,7 @@ gem 'psych', '< 4'
 
 gem 'simple_form'
 
-
+gem "dotenv-rails", groups: [:development, :test]
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
