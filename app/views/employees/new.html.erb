@@ -1,0 +1,14 @@
+<h1>Our first view 🚀</h1>
+
+
+<%= simple_form_for @employee do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :address, as: :text %>
+  <%= f.input :date_of_birth,  as: :date, html5: true%>
+   <br><br>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+      <br>
+  <%= f.button :submit %>
+<% end %>

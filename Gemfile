@@ -15,8 +15,14 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
-gem 'carrierwave'
-gem 'react-rails'
+gem 'carrierwave', '>= 3.0.0.rc', '< 4.0'
+
+gem 'bootstrap-sass'
+# gem 'react-rails'
+gem 'webpacker', '~> 4.3.x'
+gem 'psych', '< 4'
+
+gem 'simple_form'
 
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
