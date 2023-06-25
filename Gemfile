@@ -19,7 +19,7 @@ gem 'carrierwave', '>= 3.0.0.rc', '< 4.0'
 
 gem 'bootstrap-sass'
 # gem 'react-rails'
-gem 'webpacker', '~> 4.3.x'
+gem "webpacker", "~> 4.x"
 gem 'psych', '< 4'
 
 gem 'simple_form'

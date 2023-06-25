@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  # root 'employees#index'
+  root 'pages#index'
   # resources :employees do
   #   resources :references, only: [:create]
   # end
@@ -22,4 +22,6 @@ Rails.application.routes.draw do
       resources :references
     end
   end
+
+  get '*path', to: 'pages#index', via: :all
 end
