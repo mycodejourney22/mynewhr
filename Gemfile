@@ -24,7 +24,10 @@ gem 'psych', '< 4'
 
 gem 'simple_form'
 
+gem 'fast_jsonapi'
+
 gem "dotenv-rails", groups: [:development, :test]
+gem "cloudinary"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 

@@ -11,6 +11,15 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  root 'employees#index'
-  resources :employees
+  # root 'employees#index'
+  # resources :employees do
+  #   resources :references, only: [:create]
+  # end
+
+  namespace :api do
+    namespace :v1 do
+      resources :employees
+      resources :references
+    end
+  end
 end
