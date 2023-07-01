@@ -6,12 +6,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import App from '../components/App'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App />,
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>,
     document.body.appendChild(document.createElement('div')),
   )
 })

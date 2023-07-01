@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  mount_uploaders :attachment, AttachmentUploader
+  mount_uploader :attachment, AttachmentUploader
   has_one_attached :photo
   has_many :references, dependent: :destroy
   has_one :compensation, dependent: :destroy

@@ -35,11 +35,17 @@ class Api::V1::EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
   end
 
+  def destroy
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+    head :no_content
+  end
+
 
   private
 
   def employee_params
-    params.require(:employee).permit(:first_name, :last_name, :address, :date_of_birth, references_attributes:[:first_name, :last_name])
+    params.require(:employee).permit(:first_name, :last_name, :address, :date_of_birth, :attachment,  references_attributes:[:first_name, :last_name])
   end
 
   def options
