@@ -27,7 +27,7 @@ function Employees() {
   return (
     <div>
       <h1>Welcome to 363 Employees Page</h1><br></br>
-      <ul>
+      <ul className='grid-card'>
         {List}
       </ul>
     </div>

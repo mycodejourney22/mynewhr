@@ -8,6 +8,10 @@ function EmployeeForm() {
       last_name: "",
       address: "",
       date_of_birth: "",
+      position: "",
+      start_date: "",
+      email_address: "",
+      phone_number: "",
       attachment: null
     }
   )
@@ -67,6 +71,20 @@ function EmployeeForm() {
         name="last_name"
         value={formData.last_name}
       /><br></br><br></br>
+      <input
+        type="text"
+        placeholder="Position"
+        onChange={handleChange}
+        name="position"
+        value={formData.position}
+      /><br></br><br></br>
+      <input
+        type="date"
+        placeholder="Start Date"
+        onChange={handleChange}
+        name="start_date"
+        value={formData.start_date}
+      /><br></br><br></br>
       <textarea
         type="text"
         placeholder="Address"
@@ -80,6 +98,20 @@ function EmployeeForm() {
         onChange={handleChange}
         name="date_of_birth"
         value={formData.date_of_birth}
+      /><br></br><br></br>
+      <input
+        type="text"
+        placeholder="Email address"
+        onChange={handleChange}
+        name="email_address"
+        value={formData.email_address}
+      /><br></br><br></br>
+      <input
+        type="text"
+        placeholder="Contact number"
+        onChange={handleChange}
+        name="phone_number"
+        value={formData.phone_number}
       /><br></br><br></br>
       <input
         type="file"
