@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_01_204531) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_02_162811) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,10 +74,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_204531) do
     t.string "last_name"
     t.string "relationship"
     t.string "email_address"
-    t.integer "contact_number"
     t.bigint "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "contact_number"
     t.index ["employee_id"], name: "index_references_on_employee_id"
   end
 
