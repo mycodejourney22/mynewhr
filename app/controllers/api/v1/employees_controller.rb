@@ -45,7 +45,9 @@ class Api::V1::EmployeesController < ApplicationController
   private
 
   def employee_params
-    params.require(:employee).permit(:first_name, :last_name, :address, :date_of_birth, :attachment,  references_attributes:[:first_name, :last_name])
+    params.require(:employee).permit(:first_name, :last_name, :address, :date_of_birth, :attachment,
+      :position, :email_address, :phone_number, :start_date,
+      references_attributes:[:first_name, :last_name])
   end
 
   def options

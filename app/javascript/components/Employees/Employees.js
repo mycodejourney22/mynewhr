@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Employee from './Employee'
 
 
@@ -12,24 +13,36 @@ function Employees() {
       .catch(error => console.log(error))
   }, [employees.length])
 
-  console.log(employees)
 
   const List = employees.map((item) => {
     return <Employee
-      first_name={item.attributes.first_name}
-      last_name={item.attributes.last_name}
+      firstName={item.attributes.first_name}
+      lastName={item.attributes.last_name}
       address={item.attributes.address}
       date={item.attributes.date_of_birth}
       url={item.attributes.attachment.url}
+      startDate={item.attributes.start_date}
+      position={item.attributes.position}
+      emailAddress={item.attributes.email_address}
+      phoneNumber={item.attributes.phone_number}
+      active={item.attributes.active}
+
       key={item.attributes.id}
     />
   })
   return (
     <div>
-      <h1>Welcome to 363 Employees Page</h1><br></br>
-      <ul className='grid-card'>
-        {List}
-      </ul>
+      <div className='main-header'>
+        <div className='flex-card'>
+          <h1>Employees</h1>
+          <Link to='/employees/new' className='btn bold'><i class="fa-solid fa-plus pr"></i> Add Employee</Link>
+        </div>
+      </div>
+      <div className='employee-card-section'>
+        <ul className='grid-card'>
+          {List}
+        </ul>
+      </div>
     </div>
   )
 }

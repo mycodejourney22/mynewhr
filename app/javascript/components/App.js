@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Employees from './Employees/Employees'
 import Employee from './Employee/Employee'
 import EmployeeForm from './EmployeeForm/EmployeeForm'
-import './App.css'
+import '../css/App.css'
 
 function App() {
   return (
