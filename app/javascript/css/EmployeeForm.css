@@ -1,30 +1,65 @@
 .form-card {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 8em;
 }
 
+form,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+.form-header {
+  margin-bottom: 1em;
+}
 
 form {
   background-color: white;
-  width: 60%;
-  max-width: 600px;
-  margin: 2em 0;
-  padding: 2em;
-  border-radius: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  top: -140px;
+}
+
+.label {
+  font-weight: bold;
 }
 
 .form-input {
-  width: 90%;
+  width: 100%;
   padding: 1em;
-  border-radius: 1em;
+  border-radius: 0.5em;
   cursor: auto;
   background-image: none;
   border: 1px solid #C9B7EB;
   font-size: 15px;
+  margin-top: 8px;
+}
+
+
+
+.ctn-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 20px;
+  border: none;
+  border-radius: 0.5em;
+  width: 100%;
+  background-color: #C9B7EB;
+  color: black;
+}
+
+.prev-btn {
+  margin-top: 1em;
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  padding: 0px;
+  margin-bottom: 2em;
+  text-decoration: underline;
+}
+
+.prev-btn:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }

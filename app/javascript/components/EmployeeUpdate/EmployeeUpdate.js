@@ -1,18 +1,11 @@
 import React from 'react'
-
-import EmployeeForm from './EmployeeForm'
+import EmployeeEdit from './EmployeeEdit'
 import { Link } from "react-router-dom"
 
-
-
-
-
-function EmployeeNew() {
+export default function EmployeeUpdate() {
   return (
     <div className='wrapper'>
-      <EmployeeForm />
+      <EmployeeEdit />
     </div>
   )
 }
-
-export default EmployeeNew

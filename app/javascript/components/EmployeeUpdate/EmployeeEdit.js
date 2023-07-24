@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import PersonalInfo from './PersonalInfo'
 import ReferenceInfo from './ReferenceInfo'
 import SecondReferenceInfo from './SecondReferenceInfo'
@@ -7,37 +8,100 @@ import { validateForm } from '../Utility/Errors'
 import { validateRefForm } from '../Utility/Errors'
 import { validateSecRefForm } from '../Utility/Errors'
 
-function EmployeeForm() {
 
-  const [page, setPage] = React.useState(0)
+export default function EmployeeEdit() {
+  const { id } = useParams()
+  console.log(id)
 
-  const [formData, setFormData] = React.useState(
+  const [data, setData] = useState(null)
+  const [formData, setFormData] = useState(null)
+  const [page, setPage] = useState(0)
+  const [errors, setErrors] = React.useState({})
+  const [refId, setRefId] = React.useState(
     {
-      first_name: "",
-      last_name: "",
-      address: "",
-      date_of_birth: "",
-      position: "",
-      start_date: "",
-      email_address: "",
-      phone_number: "",
-      attachment: null,
-      reference_first_name: "",
-      reference_last_name: "",
-      reference_email_address: "",
-      reference_contact_number: "",
-      reference_relationship: "",
-      second_reference_first_name: "",
-      second_reference_last_name: "",
-      second_reference_contact_number: "",
-      second_reference_email_address: "",
-      second_reference_relationship: ""
+      first_id: 0,
+      second_id: 0
     }
   )
 
-  const [errors, setErrors] = React.useState({})
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/v1/employees/${id}`)
+      .then(res => res.json())
+      .then(data => setData(data))
+  }, [id])
 
 
+  useEffect(() => {
+    if (data) {
+      // Extracting the required properties when data is available
+      const {
+        first_name,
+        last_name,
+        address,
+        date_of_birth,
+        position,
+        start_date,
+        email_address,
+        phone_number,
+        attachment,
+      } = data.employee
+
+      const {
+        first_name: reference_first_name,
+        last_name: reference_last_name,
+        email_address: reference_email_address,
+        contact_number: reference_contact_number,
+        relationship: reference_relationship,
+        id: first_reference_id
+      } = data.references[0]
+
+      const {
+        first_name: second_reference_first_name,
+        last_name: second_reference_last_name,
+        email_address: second_reference_email_address,
+        contact_number: second_reference_contact_number,
+        relationship: second_reference_relationship,
+        id: second_reference_id
+      } = data.references[1] || {
+        second_reference_first_name: "",
+        second_reference_last_name: "",
+        second_reference_contact_number: "",
+        second_reference_email_address: "",
+        second_reference_relationship: ""
+      }
+
+      // Forming the new object
+      const formData = {
+        first_name,
+        last_name,
+        address,
+        date_of_birth,
+        position,
+        start_date,
+        email_address,
+        phone_number,
+        attachment: attachment?.url || null,
+        reference_first_name,
+        reference_last_name,
+        reference_email_address,
+        reference_contact_number,
+        reference_relationship,
+        second_reference_first_name,
+        second_reference_last_name,
+        second_reference_email_address,
+        second_reference_contact_number,
+        second_reference_relationship,
+      }
+
+      setRefId({
+        first_id: first_reference_id,
+        second_id: second_reference_id
+      })
+
+      setFormData(formData)
+    }
+  }, [data])
 
   const componentList = [
     <PersonalInfo
@@ -74,8 +138,6 @@ function EmployeeForm() {
     />
   ]
 
-  const navigate = useNavigate()
-
   function handleChange(event) {
     const { name, value, type, checked } = event.target
     setFormData(prevFormData => {
@@ -85,6 +147,16 @@ function EmployeeForm() {
       }
     })
   }
+
+  function onImageChange(event) {
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData, attachment: event.target.files[0]
+      }
+    })
+  }
+
+  const navigate = useNavigate()
 
   function handleSubmit(event, data, setErrors) {
     event.preventDefault()
@@ -120,9 +192,11 @@ function EmployeeForm() {
     }
   }
 
+
+
   function submitToApi(formData, ReferenceFormData, SecondReferenceFormData) {
-    fetch('http://localhost:3000/api/v1/employees', {
-      method: 'POST',
+    fetch(`http://localhost:3000/api/v1/employees/${id}`, {
+      method: 'PUT',
       body: formData
     })
       .then((response) => response.json())
@@ -131,16 +205,16 @@ function EmployeeForm() {
         ReferenceFormData.append('reference[employee_id]', employeeId);
         SecondReferenceFormData.append('reference[employee_id]', employeeId);
 
-        fetch('http://localhost:3000/api/v1/references', {
-          method: 'POST',
+        fetch(`http://localhost:3000/api/v1/references/${first_id.first_reference_id}`, {
+          method: 'PUT',
           body: ReferenceFormData
         })
           .then(res => res.json())
           .then(data => console.log(data))
           .catch(error => console.log(error));
 
-        fetch('http://localhost:3000/api/v1/references', {
-          method: 'POST',
+        fetch(`http://localhost:3000/api/v1/references/${second_id.second_reference_id}`, {
+          method: 'PUT',
           body: SecondReferenceFormData
         })
           .then(res => res.json())
@@ -151,16 +225,12 @@ function EmployeeForm() {
   }
 
 
+  console.log(refId)
 
-
-  function onImageChange(event) {
-    setFormData(prevFormData => {
-      return {
-        ...prevFormData, attachment: event.target.files[0]
-      }
-    })
+  if (!formData) {
+    // Render a loading message or component while waiting for data
+    return <div>Loading...</div>
   }
-
 
   return (
     <div className='form-card'>
@@ -175,5 +245,3 @@ function EmployeeForm() {
     </div>
   )
 }
-
-export default EmployeeForm

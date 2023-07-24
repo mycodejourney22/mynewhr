@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;700&family=Noto+Serif+Georgian:wght@900&display=swap');
 @import './EmployeeForm.css';
+@import './Utility.css';
 
 p,
 h1,
@@ -9,13 +10,15 @@ a {
 }
 
 body {
-  background-color: #f1f1f1;
   padding: 0;
   margin: 0;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
+}
 
-
+.wrapper {
+  height: 100vh;
+  background-color: white;
 }
 
 .main-header {
@@ -35,12 +38,13 @@ body {
 }
 
 .Card {
-  height: 25em;
-  width: 18.5em;
+  height: 27em;
+  width: 20.5em;
   background-color: white;
   margin: 2em 0;
   border-radius: 2em;
   text-align: center;
+  box-shadow: 0.5px 0.5px 1px;
 
 }
 
@@ -52,6 +56,7 @@ body {
   padding: 1em;
   border-radius: 1em;
   font-size: 1em;
+  height: 5.5em;
 }
 
 
@@ -87,11 +92,11 @@ body {
   border-radius: 0.75em;
 }
 
-.employee-card-section {
+/* .employee-card-section {
   position: relative;
   top: -130px;
 
-}
+} */
 
 .grid-card {
   display: grid;
@@ -117,6 +122,10 @@ body {
   justify-content: space-between;
 }
 
+.top-padding {
+  padding: 2em 0;
+}
+
 
 .btn {
   background-color: #C9B7EB;
@@ -124,4 +133,9 @@ body {
   padding: 1em 1.75em;
   border-radius: 2em;
   color: black;
+}
+
+.btn-red {
+  background-color: #ac0d0d;
+  color: white;
 }

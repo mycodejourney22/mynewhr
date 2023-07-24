@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default function PersonalInfo({ page, setPage, formData, handleChange, onImageChange, setErrors, errors, validateForm }) {
+
   return (
     <div className='form-inner-card'>
       <form>
-        <label className='label'>First Name</label>
         <input
           type="text"
           placeholder="First Name"
@@ -15,7 +15,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
         />
         {errors.first_name && <span className='error'>{errors.first_name}</span>}
         <br></br><br></br>
-        <label className='label'>Last Name</label>
         <input
           type="text"
           placeholder="Last Name"
@@ -26,7 +25,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
         />
         {errors.last_name && <span className='error'>{errors.last_name}</span>}
         <br></br><br></br>
-        <label className='label'>Position</label>
         <input
           type="text"
           placeholder="Position"
@@ -37,7 +35,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
         />
         {errors.position && <span className='error'>{errors.position}</span>}
         <br></br><br></br>
-        <label className='label'>Start Date</label>
         <input
           type="date"
           placeholder="Start Date"
@@ -48,7 +45,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
         />
         {errors.start_date && <span className='error'>{errors.start_date}</span>}
         <br></br><br></br>
-        <label className='label'>Address</label>
         <textarea
           type="text"
           placeholder="Address"
@@ -57,7 +53,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
           value={formData.address}
           className='form-input'
         /><br></br><br></br>
-        <label className='label'>Date of birth</label>
         <input
           type="date"
           placeholder="Date of birth"
@@ -68,7 +63,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
         />
         {errors.date_of_birth && <span className='error'>{errors.date_of_birth}</span>}
         <br></br><br></br>
-        <label className='label'>Email address</label>
         <input
           type="text"
           placeholder="Email address"
@@ -79,7 +73,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
         />
         {errors.email && <span className='error'>{errors.email}</span>}
         <br></br><br></br>
-        <label className='label'>Contact number</label>
         <input
           type="text"
           placeholder="Contact number"
@@ -90,7 +83,6 @@ export default function PersonalInfo({ page, setPage, formData, handleChange, on
         />
         {errors.phone_number && <span className='error'>{errors.phone_number}</span>}
         <br></br><br></br>
-        <label className='label'>Profile picture</label>
         <input
           type="file"
           name="attachment"

@@ -13,7 +13,6 @@ function Employees() {
       .catch(error => console.log(error))
   }, [employees.length])
 
-
   const List = employees.map((item) => {
     return <Employee
       firstName={item.attributes.first_name}
@@ -26,19 +25,19 @@ function Employees() {
       emailAddress={item.attributes.email_address}
       phoneNumber={item.attributes.phone_number}
       active={item.attributes.active}
-
+      id={item.id}
       key={item.attributes.id}
     />
   })
   return (
     <div>
-      <div className='main-header'>
+      <div>
+      </div>
+      <div className='employee-card-section'>
         <div className='flex-card'>
           <h1>Employees</h1>
           <Link to='/employees/new' className='btn bold'><i class="fa-solid fa-plus pr"></i> Add Employee</Link>
         </div>
-      </div>
-      <div className='employee-card-section'>
         <ul className='grid-card'>
           {List}
         </ul>

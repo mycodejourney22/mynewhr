@@ -31,8 +31,10 @@ class Api::V1::EmployeesController < ApplicationController
     end
   end
 
-  def edit
+  def update
     @employee = Employee.find(params[:id])
+    @employee.update!(employee_params)
+    render json: @employee
   end
 
   def destroy
@@ -46,7 +48,7 @@ class Api::V1::EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:first_name, :last_name, :address, :date_of_birth, :attachment,
-      :position, :email_address, :phone_number, :start_date,
+      :position, :email_address, :phone_number, :start_date,:active,
       references_attributes:[:first_name, :last_name])
   end
 

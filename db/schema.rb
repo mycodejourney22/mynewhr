@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_02_162811) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_23_221600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_02_162811) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pension_code"
+    t.string "tax_code"
+    t.string "salaries", default: [], array: true
     t.index ["employee_id"], name: "index_compensations_on_employee_id"
   end
 

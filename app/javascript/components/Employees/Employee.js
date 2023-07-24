@@ -1,11 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 function Employee(props) {
-  return (<div className='Card'>
+
+  const styles = {
+    backgroundColor: props.active ? "#E5EEE6" : "#FFEBF6"
+  }
+
+  return (<Link className='card-link' to={`/employees/${props.id}`}><div className='Card'>
     <img src={props.url} alt={props.url} className='profile-image' />
     <p className='employee_name'>{props.firstName} {props.lastName}</p>
     <p className='position'>{props.position}</p>
-    <p className='active'>{props.active ? "ACTIVE" : "INACTIVE"}</p>
+    <p className='active' style={styles}>{props.active ? "ACTIVE" : "INACTIVE"}</p>
     <div className='contact-card'>
       <p><i class="fa-regular fa-envelope pr"></i> {props.emailAddress}</p>
       <p className='pt-1'><i class="fa-solid fa-mobile pr"></i> {props.phoneNumber}</p>
@@ -21,7 +28,7 @@ function Employee(props) {
       </div>
     </div>
     <br></br>
-  </div>)
+  </div></Link>)
 }
 
 export default Employee

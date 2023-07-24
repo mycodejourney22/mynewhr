@@ -5,36 +5,6 @@ function ReferenceInfo({ page, setPage, formData, handleChange, setErrors, error
   return (
     <div className='form-inner-card '>
       <form  >
-        <button
-          className='prev-btn'
-          onClick={() => {
-            setPage(page - 1);
-          }}>
-          Back
-        </button>
-        <label className='label'>First Name</label>
-        <input
-          type="text"
-          placeholder="Reference First Name"
-          onChange={handleChange}
-          name="reference_first_name"
-          value={formData.reference_first_name}
-          className='form-input'
-        />
-        {errors.reference_first_name && <span className='error'>{errors.reference_first_name}</span>}
-        <br></br><br></br>
-        <label className='label'>Last Name</label>
-        <input
-          type="text"
-          placeholder="Reference Last Name"
-          onChange={handleChange}
-          name="reference_last_name"
-          value={formData.reference_last_name}
-          className='form-input'
-        />
-        {errors.reference_last_name && <span className='error'>{errors.reference_last_name}</span>}
-        <br></br><br></br>
-        <label className='label'>Contact number</label>
         <input
           type="text"
           placeholder="Reference Contact number"
@@ -45,7 +15,26 @@ function ReferenceInfo({ page, setPage, formData, handleChange, setErrors, error
         />
         {errors.reference_contact_number && <span className='error'>{errors.reference_contact_number}</span>}
         <br></br><br></br>
-        <label className='label'>Email address</label>
+        <input
+          type="text"
+          placeholder="Reference First Name"
+          onChange={handleChange}
+          name="reference_first_name"
+          value={formData.reference_first_name}
+          className='form-input'
+        />
+        {errors.reference_first_name && <span className='error'>{errors.reference_first_name}</span>}
+        <br></br><br></br>
+        <input
+          type="text"
+          placeholder="Reference Last Name"
+          onChange={handleChange}
+          name="reference_last_name"
+          value={formData.reference_last_name}
+          className='form-input'
+        />
+        {errors.reference_last_name && <span className='error'>{errors.reference_last_name}</span>}
+        <br></br><br></br>
         <input
           type="text"
           placeholder="Reference email address"
@@ -56,7 +45,6 @@ function ReferenceInfo({ page, setPage, formData, handleChange, setErrors, error
         />
         {errors.reference_email_address && <span className='error'>{errors.reference_email_address}</span>}
         <br></br><br></br>
-        <label className='label'>Reference's relationship</label>
         <input
           type="text"
           placeholder="Reference's Relationship"
@@ -79,6 +67,12 @@ function ReferenceInfo({ page, setPage, formData, handleChange, setErrors, error
             }
           }}>
           Continue
+        </button>
+        <button
+          onClick={() => {
+            setPage(page - 1);
+          }}>
+          Previous
         </button>
       </form>
     </div>
